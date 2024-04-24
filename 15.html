@@ -39,10 +39,12 @@ if(naiti != undefined) {
   }
 // если не найден сайт на 1-й странице поисковой выдачи гуляем не дальше 5-й и переходим на сайт
   let str2 = document.getElementsByClassName("VanillaReact Pager-Item Pager-Item_type_page")[0];
-  //Переходим на 2-ю страницу поиска, но переход происходит бесконечно, как будто этот скрипт запускается в бесконечном цикле
+  //Переходим на 2-ю страницу поиска, но переход происходит бесконечно, как будто весь скрипт запускается в бесконечном цикле
   str2.click();
-  ++j;
-  console.log("Страница " + j);
+  if (str2.innerText == "2") {
+   console.log("Страница " + str2.innerText); 
+   location.href = "https://www.avito.ru/";
+   }
 }
 
 function getRandom(min,max) {
