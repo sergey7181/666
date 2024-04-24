@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Задание15_2
+// @name         Задание15_3
 // @namespace    http://tampermonkey.net/
 // @version      2024-04-23
 // @description  try to take over the world!
@@ -14,7 +14,6 @@ let naiti = document.getElementsByClassName('search3__button mini-suggest__butto
 //let keywords = ["Купить автомобиль", "услуги сантехника", "Купить квартиру в Москве", "продать ботинки"];
 //let keyword = keywords[getRandom(0, keywords.length)];
 let keyword = ["лучшие триллеры"];
-let j = 1;
 
 //Работаем на главной странице
 if(naiti != undefined) {
@@ -37,14 +36,20 @@ if(naiti != undefined) {
       break;
     }
   }
-// если не найден сайт на 1-й странице поисковой выдачи гуляем не дальше 5-й и переходим на сайт
-  let str2 = document.getElementsByClassName("VanillaReact Pager-Item Pager-Item_type_page")[0];
-  //Переходим на 2-ю страницу поиска, но переход происходит бесконечно, как будто весь скрипт запускается в бесконечном цикле
-  str2.click();
-  if (str2.innerText == "2") {
-   console.log("Страница " + str2.innerText); 
-   location.href = "https://www.avito.ru/";
-   }
+// Если не найден сайт на 1-й странице поисковой выдачи гуляем не дальше 5-й и переходим на главную страницу
+  // Кнопка "ДАЛЬШЕ"
+  let dalshe = document.getElementsByClassName("VanillaReact Pager-Item Pager-Item_type_next")[0];
+  // Текущая страница
+  let str = document.getElementsByClassName("VanillaReact Pager-Item Pager-Item_type_page")[0];
+
+  let elementExist = setInterval(() => {
+    dalshe.click();
+    if (str.innerText == "5") {
+       console.log("Страница " + str.innerText);
+       location.href = "https://ya.ru/";
+    }
+    clearInterval(elementExist);
+  }, 1000);
 }
 
 function getRandom(min,max) {
