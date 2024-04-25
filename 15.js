@@ -59,10 +59,6 @@ if(naiti != undefined) {
            if (links.length == 0) {
              location.href = "https://www.avito.ru";
            }
-           if (localLink.href.includes("business")) {
-             console.log("Мы на Бизнесе");
-             location.href = "https://ya.ru/";
-           }
            if (localLink.href.includes("www.avito.ru") && 
                localLink.href.includes("business") == false && 
                localLink.href.includes("career") == false && 
