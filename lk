@@ -13,7 +13,7 @@ save.onmousedown = async () => {
         save.hidden = true;
         cancel.hidden = true;
         
-        let formData = new FormData;
+        let formData = new FormData();
         formData.append("value", na_new);
         formData.append("item", save.dataset.item);
 
