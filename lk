@@ -1,0 +1,24 @@
+Выдает в консоль такую ошибку :
+
+lk.php:124 Uncaught (in promise) TypeError: Failed to execute 'fetch' on 'Window': Request with GET/HEAD method cannot have body.
+    at save.onmousedown (lk.php:124:30)
+save.onmousedown @ lk.php:124
+
+- на этот кусок кода :
+
+save.onmousedown = async () => {
+        let na_new = inp.firstChild.value;
+        inp.innerHTML = na_new;         // Записываем новое имя или фамилию  
+        edit.hidden = false;
+        save.hidden = true;
+        cancel.hidden = true;
+        
+        let formData = new FormData;
+        formData.append("value", na_new);
+        formData.append("item", save.dataset.item);
+
+        let response = await fetch("lk_obr.php", {
+          metod: "POST",
+          body: formData,
+        });
+      }
